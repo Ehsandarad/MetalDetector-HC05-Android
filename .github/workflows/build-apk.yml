@@ -2,9 +2,7 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -24,7 +22,7 @@ jobs:
       uses: gradle/gradle-build-action@v3
 
     - name: Build with Gradle
-      run: ./gradlew assembleDebug
+      run: ./gradlew :app:assembleDebug --stacktrace
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
